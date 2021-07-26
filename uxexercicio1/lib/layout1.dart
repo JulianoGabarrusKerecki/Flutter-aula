@@ -1,89 +1,31 @@
-/// Flutter code sample for SingleChildScrollView
-
-// In this example, the children are spaced out equally, unless there's no more
-// room, in which case they stack vertically and scroll.
-//
-// When using this technique, [Expanded] and [Flexible] are not useful, because
-// in both cases the "available space" is infinite (since this is in a viewport).
-// The next section describes a technique for providing a maximum height constraint.
 
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
+void main(){
+  runApp(new MaterialApp(
+    home: Tela1,
+  ));
 
-/// This is the main application widget.
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  static const String _title = 'Flutter Code Sample';
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: _title,
-      home: MyStatelessWidget(),
-    );
-  }
 }
 
-/// This is the stateless widget that the main application instantiates.
-class MyStatelessWidget extends StatelessWidget {
-  const MyStatelessWidget({Key? key}) : super(key: key);
+class Tela1 extends StatelessWidget {
+  const Tela1({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTextStyle(
-      style: Theme.of(context).textTheme.bodyText2!,
-      child: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints viewportConstraints) {
-          return SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: viewportConstraints.maxHeight,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
+    return Scaffold(
+      appBar:AppBar(
+        backgroundColor: Colors.indigoAccent,
+      ),
 
-                  Container(
-                      child:  Image(image: AssetImage("images/abb.png"))),
-                  Container(
-                    // A fixed-height child.
-                    color: const Color(0xffeeee00), // Yellow
-                    height: 120.0,
-                    alignment: Alignment.center,
-                    child: const Text('Fixed Height Content'),
-                  ),
-                  Container(
-                      child:  Image(image: AssetImage("images/abb.png"))),
-
-                  Container(
-                    // Another fixed-height child.
-                    color: const Color(0xffFFB6C1), // Green
-                    height: 120.0,
-                    alignment: Alignment.center,
-                    child: const Text('Fixed Height Content'),
-
-                  ),
-                  Container(
-                      child:  Image(image: AssetImage("images/saturno.png"))),
-
-
-                  Container(
-                    // Another fixed-height child.
-                    color: const Color(0xff008020), // Green
-                    height: 120.0,
-                    child: const Text('Fixed Height Content'),
-                    alignment: Alignment.center,),
-
-
-                  ],
-              ),
-            ),
-          );
-        },
+      body: Center(
+        child:Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Padding(padding: EdgeInsets.all(10),
+              child: Image.asset("imagens/nasa"),)
+          ],
+        ) ,
       ),
     );
-  }
-}
+
